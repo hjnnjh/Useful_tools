@@ -1,0 +1,8 @@
+# pycharm
+**/.idea/
+**/__pycache__/
+
+# pyinstaller
+**/build/
+*.spec
+*.ico
