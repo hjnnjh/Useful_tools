@@ -6,3 +6,6 @@
 **/build/
 *.spec
 *.ico
+
+# GUI
+*.ui
