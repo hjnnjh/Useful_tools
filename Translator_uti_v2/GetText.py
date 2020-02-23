@@ -7,6 +7,7 @@
 # @Software: PyCharm
 
 import pyperclip
+import re
 
 class Gettext():
     def PasteText(self):
@@ -26,8 +27,8 @@ class Gettext():
         if type(text) is not str:
             raise ValueError('Copy content is not str')
         else:
-            result = " ".join(text.split('\r\n'))
-            # return text.replace('\r\n','')
+            # result = " ".join(text.split('\r\n'))
+            result = " ".join(re.split(r'[\s]+', text))
             return result
 
 if __name__ == "__main__":

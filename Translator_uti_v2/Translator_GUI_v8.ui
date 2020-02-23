@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Translator_Google</class>
+ <widget class="QMainWindow" name="Translator_Google">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>751</width>
+    <height>592</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Translator</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="0" colspan="2">
+     <widget class="QTextBrowser" name="textBrowser_origin">
+      <property name="styleSheet">
+       <string notr="true">font: 14pt &quot;微软雅黑&quot;;</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="2" colspan="2">
+     <widget class="QTextBrowser" name="textBrowser_translation">
+      <property name="font">
+       <font>
+        <family>微软雅黑</family>
+        <pointsize>14</pointsize>
+       </font>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="0">
+     <widget class="QPushButton" name="add_content_button">
+      <property name="styleSheet">
+       <string notr="true">font: 14pt &quot;微软雅黑&quot;;</string>
+      </property>
+      <property name="text">
+       <string>增加文本内容</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="1">
+     <widget class="QPushButton" name="add_new_paragragh_button">
+      <property name="font">
+       <font>
+        <family>微软雅黑</family>
+        <pointsize>14</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>增加新的段落</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="2">
+     <widget class="QPushButton" name="translate_2_button">
+      <property name="styleSheet">
+       <string notr="true">font: 14pt &quot;微软雅黑&quot;;</string>
+      </property>
+      <property name="text">
+       <string>翻译</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="3">
+     <widget class="QPushButton" name="clear_content_button">
+      <property name="styleSheet">
+       <string notr="true">font: 14pt &quot;微软雅黑&quot;;</string>
+      </property>
+      <property name="text">
+       <string>清除内容</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
