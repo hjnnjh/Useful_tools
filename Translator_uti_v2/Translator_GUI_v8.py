@@ -12,6 +12,7 @@ from ph_divide import get_content, get_former, get_later, add_text
 from main import main
 from GoogleTranlator import GoogleTranslator
 from functools import partial
+import re
 
 text = ""
 content_counter = 1
@@ -77,9 +78,9 @@ class Ui_Translator_Google(object):
             else:
                 text += "\r\n" + get_content()
         if mode == "add_ph":
-            text += 3 * "#" + 3 * "$"
+            text += " " + 5 * "#" + 5 * "$"
         # print("text:",text)
-        result = " ".join(text.split('\r\n'))
+        result = " ".join(re.split(r'[\s]+', text))
         # print("result:", result)
         assert len(result) != 0
         self.statusbar.showMessage("获取内容%d" % (content_counter))
