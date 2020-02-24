@@ -78,7 +78,7 @@ class Ui_Translator_Google(object):
             else:
                 text += "\r\n" + get_content()
         if mode == "add_ph":
-            text += " " + 3 * "#" + 3 * "$"
+            text += " " + "?" + 20 * ("&" + "?")
         # print("text:",text)
         result = " ".join(re.split(r'[\s]+', text))
         # print("result:", result)
