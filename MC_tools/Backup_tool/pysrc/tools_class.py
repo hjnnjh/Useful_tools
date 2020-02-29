@@ -7,12 +7,13 @@
 # @Software: PyCharm
 
 import sys, os, getpass, shutil
+from configobj import ConfigObj
 
 class MC_tools():
     """
     minecraft小工具
     """
-    def __init__(self, mode="test", path_1="C:\\Users\\75542\Desktop\\test_src", path_2="C:\\Users\\75542\Desktop\\test_dst"):
+    def __init__(self, cfgpath, mode="test", path_1="C:\\Users\\75542\Desktop\\test_src", path_2="C:\\Users\\75542\Desktop\\test_dst"):
         # 系统用户名
         self._username = getpass.getuser()
         self.mode = mode
@@ -20,11 +21,14 @@ class MC_tools():
             self._src_path = path_1
             self._dst_path = path_2
         else:
-            self._src_path =  "C:/Users/" + self._username + "/AppData/Roaming/.minecraft/versions/1.14.4-forge-28.2.0/saves"
+            config = ConfigObj(cfgpath, encoding='GBK')
+            # self._src_path =  "C:/Users/" + self._username + "/AppData/Roaming/.minecraft/versions/1.14.4-forge-28.2.0/saves"
             if self._username == "75542":
-                self._dst_path = "F:/OneDrive/minecraft_source/存档文件"
+                self._dst_path = config["laptop_dst_path"]
+                self._src_path = config["laptop_src_path"]
             if self._username == "hjnnjh":
-                self._dst_path = "C:/Users/hjnnjh/OneDrive/minecraft_source/存档文件"
+                self._dst_path = config["cpt_dst_path"]
+                self._src_path = config["cpt_src_path"]
 
     def get_latest_save(self, path):
         """
@@ -80,6 +84,7 @@ class MC_tools():
                             os.path.join(self._src_path, last_cloud_save_name))
         except Exception as e:
             print('错误：', e)
+            os.system("pause")
         else:
             print("获取存档成功")
 

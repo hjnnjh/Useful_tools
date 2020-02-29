@@ -10,7 +10,7 @@ import os
 from pysrc.tools_class import MC_tools
 
 def main(str):
-    Backup_tool = MC_tools(mode=str)
+    Backup_tool = MC_tools(cfgpath = r'./config.ini', mode = str)
     if Backup_tool.mode == "BKU":
         Backup_tool.Backup_saves()
     if Backup_tool.mode == "PULL":
