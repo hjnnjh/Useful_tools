@@ -8,7 +8,7 @@
 
 import sys
 from PyQt5 import QtCore, QtGui, QtWidgets
-from Translator_GUI_v8 import *
+from Translator_GUI_v10 import *
 
 class mwindow(QtWidgets.QMainWindow,Ui_Translator_Google):
     def __init__(self):
