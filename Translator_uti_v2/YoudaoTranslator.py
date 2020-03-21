@@ -6,6 +6,10 @@
 # @File    : YoudaoTranslator.py
 # @Software: PyCharm
 
+"""
+英文文本分句初步解决了，舒服了。
+"""
+
 import hashlib
 import random
 import time
@@ -17,7 +21,6 @@ import re
 """
 向有道翻译发送data，得到翻译结果
 """
-
 
 class Youdao():
     def __init__(self, msg):
@@ -95,25 +98,36 @@ class Youdao():
             # print("翻译的结果是：%s" % translate_results)
             return translate_results
         else:
-            print(translate_results)
-            return "error"
+            # print(translate_results)
+            return translate_results
 
 class Youdao_translator():
+    """
+    翻译之前处理文本
+    """
     def __init__(self, rawtext):
         self.rawtext = rawtext
 
     def splittext(self):
-        text_split = re.split(r'([.?!;]+)', self.rawtext)
-        text_split.append("")
-        text_split = ["".join(i) for i in zip(text_split[0::2], text_split[1::2])]
-        # print(text_split)
-        return text_split
+        # 英文分句，主要思想为.后面必须是大写字母
+        text_split = re.split(r'([.?!;]+[\s]*)([A-Z])', self.rawtext)
+        final_text = []
+        for i in range(len(text_split)):
+            if re.match(r'^[A-Z]$', text_split[i]) != None:
+                text_split[i+1] = text_split[i] + text_split[i+1]
+            if re.match(r'[.?!;]+[\s]*', text_split[i]) != None:
+                text_split[i-1] = text_split[i-1] + text_split[i]
+        for sentence in text_split:
+            if (re.match(r'^[A-Z]$', sentence) == None) and (re.match(r'[.?!;]+[\s]*', sentence) == None):
+                final_text.append(sentence)
+        return final_text
 
-    def Yd_translator(self):
+    def Yd_translate(self):
         text_split_list = self.splittext()
         result_list = []
         for text in text_split_list:
-            if re.match(r'\s+', text) == None:
+            # 去掉可能的无字符的元素
+            if re.match('.+', text) != None:
                 translator = Youdao(text)
                 result = translator.get_result()
                 result_list.append(result)
@@ -125,5 +139,5 @@ if __name__ == "__main__":
     # y.get_result()
     # y = youdao_split_text("this is an apple; that is a tree. ,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.?")
     # y.splittext_translate()
-    tran = Youdao_translator("This paper uses a new data source, online social lending (a.k.a. peer-to-peer lending), to help answer the question of what impact borrower-lender information asymmetries have on adverse selection, moral hazard and the holdup problem. The hold-up problem refers to when lenders with private positive information do not pass long the savings associated with lower borrower risk to the borrower. The results indicate that the hold-up problem is more severe with private lenders than public lenders, and that personal relationships can mitigate the moral hazard problem. This data source has characteristics such as group membership that allow analysis of the public (outsider) versus private (insider) debt choice without some of the endogeneity issues that are present when using other data sources. Each loan contains detailed bidding information from both public and private investors. Thus, a clean distinction can be drawn between public and private debt without the potential problem of unobserved borrower risk characteristics.")
-    print(tran.Yd_translator())
+    tran = Youdao_translator("P,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,.")
+    print(tran.Yd_translate())
