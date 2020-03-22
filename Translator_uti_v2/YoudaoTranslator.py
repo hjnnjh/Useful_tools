@@ -130,6 +130,8 @@ class Youdao_translator():
             if re.match('.+', text) != None:
                 translator = Youdao(text)
                 result = translator.get_result()
+            # 去掉翻译报错的文本
+            if type(result) == str:
                 result_list.append(result)
         final_result = "".join(result_list)
         return final_result
@@ -139,5 +141,6 @@ if __name__ == "__main__":
     # y.get_result()
     # y = youdao_split_text("this is an apple; that is a tree. ,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.?")
     # y.splittext_translate()
-    tran = Youdao_translator("P,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,.")
+    # tran = Youdao_translator("P,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,.")
+    tran = Youdao_translator("The process of consensus requires opinion exchange and communication between experts and a moderator, and needs a balance of interests of both sides. From the viewpoint of a moderator, he/she hopes to achieve the highest level of consensus while paying the minimum total cost (Ben-Arieh & Easton, 2007; Ben-Arieh et al., 2009; Liu et al., 2012; Zhang et al., 2011). From each expert’s perspective, he/she expects to gain the maximum compensation for his/her changing opinions (Gong, Xu, Lu, Li, & Xu, 2015; Gong, Xu, Zhang, et al., 2015; Gong, Zhang et al., 2015; Zhang, Gong, & Chiclana, 2017). Mathematically, these two goals are dual to each other. Let yi, i ∈ M, denotes the unit return that expert ei expect to be compensated. In Gong, Xu, Lu, et al. (2015), Gong, Xu, Zhang, et al. (2015), Gong, Zhang et al. (2015), and Zhang et al. (2017), the authors proposed several group decision consensus on minimum cost models and maximum return models based on linear programming from the viewpoints of moderators and individual experts. Two consensus models were constructed as follows (Gong, Xu, Zhang, et al., 2015; Gong, Zhang et al., 2015):")
     print(tran.Yd_translate())
