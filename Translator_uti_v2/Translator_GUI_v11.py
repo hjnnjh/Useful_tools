@@ -6,13 +6,11 @@
 #
 # WARNING! All changes made in this file will be lost!
 
-from PyQt5 import QtCore, QtGui, QtWidgets
-from GetText import Gettext
-from ph_divide import get_content, get_former, get_later, add_text
-from main import main
-from GoogleTranlator import GoogleTranslator
-from functools import partial
 import re
+from PyQt5 import QtCore, QtGui, QtWidgets
+from ph_divide import get_content
+from main import main
+from functools import partial
 from YoudaoTranslator import Youdao, Youdao_translator
 
 text = ""
